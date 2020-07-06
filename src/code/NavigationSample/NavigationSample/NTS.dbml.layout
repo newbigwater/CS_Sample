@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="NTS">
+  <DataContextMoniker Name="/NTSDataContext" />
+  <nestedChildShapes>
+    <classShape Id="5d6451e0-1195-473d-a16c-2f514b4f351b" absoluteBounds="8.75, 2.25, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/NTSDataContext/AlarmTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd34ecb0-7ad4-4620-afb8-2b98cf57e62b" absoluteBounds="8.765, 2.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="88a397df-1fbe-4ffd-baf3-2ab70cb78077" absoluteBounds="5.25, 3.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NTSDataContext/TM1_SENSOR1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3a90c4db-2d4b-49b0-8491-51b81bbd0db8" absoluteBounds="5.265, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

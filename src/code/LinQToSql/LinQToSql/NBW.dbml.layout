@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="NBW">
+  <DataContextMoniker Name="/NBWDataContext" />
+  <nestedChildShapes>
+    <classShape Id="3da3463b-2ccf-4aa6-8985-4f05cf025b1a" absoluteBounds="0.5, 0.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NBWDataContext/TM1_BUFFER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8dbab3cb-4dcb-4ee7-89a9-06af9aad2f8c" absoluteBounds="0.51499999999999968, 1.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf9c6bb7-5076-45ac-8328-646404ca2f97" absoluteBounds="2.75, 0.75, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NBWDataContext/TM1_SENSOR1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bb998635-6bce-4e71-bac3-8848fc8f51c6" absoluteBounds="2.765, 1.21, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a158d557-15a3-488a-b26b-9e1952a377bb" absoluteBounds="5.25, 3.875, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NBWDataContext/TM1_SENSOR2" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2399a1cd-c7b8-4ec2-a905-a16550dd31c3" absoluteBounds="5.265, 4.335, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4c405ebc-0f81-4323-9f4c-e2429d431c5c" absoluteBounds="3.25, 4.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/NBWDataContext/TM1_TURN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d80768ce-8c26-4f32-aec6-71ce8e136331" absoluteBounds="3.265, 4.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d52e56b4-996f-493e-ad4c-dcd43bfee5a3" absoluteBounds="5.375, 0.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/NBWDataContext/AlarmTable" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cef86b15-f318-486d-bd5e-0d47ac3ff019" absoluteBounds="5.39, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
