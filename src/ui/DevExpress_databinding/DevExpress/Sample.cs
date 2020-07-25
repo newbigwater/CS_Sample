@@ -11,7 +11,7 @@ namespace DevExpress
     public class Sample: INotifyPropertyChanged
     {
         private string _name;
-        private string _phone;
+        public string _phone;
         private int _old;
         private bool _married;
 

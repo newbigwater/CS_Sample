@@ -32,5 +32,11 @@ namespace DevExpress
 
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            aaaa._phone = "222222222";
+            PhoneTextEdit.Update();
+        }
     }
 }

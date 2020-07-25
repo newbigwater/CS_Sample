@@ -56,6 +56,7 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OldTextEdit.Properties)).BeginInit();
@@ -339,11 +340,22 @@
             this.panelControl2.Size = new System.Drawing.Size(55, 20);
             this.panelControl2.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(547, 41);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 5;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // XtraForm1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1306, 681);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.tablePanel1);
             this.Controls.Add(this.panelControl1);
@@ -405,5 +417,6 @@
         private XtraEditors.PanelControl panelControl1;
         private Utils.Layout.TablePanel tablePanel1;
         private XtraEditors.PanelControl panelControl2;
+        private System.Windows.Forms.Button button1;
     }
 }
