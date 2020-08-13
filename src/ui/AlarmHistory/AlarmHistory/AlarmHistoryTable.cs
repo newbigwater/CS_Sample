@@ -13,7 +13,7 @@ namespace AlarmHistory
     {
         private int? _Unit;
         private string _Category;
-        private string _ReceivedTime;
+        private DateTime _ReceivedTime;
         private int? _AlarmCode;
         private string _AlarmHexCode;
         private string _AlarmTextKorean;
@@ -51,7 +51,7 @@ namespace AlarmHistory
             }
         }
 
-        public string ReceivedTime
+        public DateTime ReceivedTime
         {
             get
             {

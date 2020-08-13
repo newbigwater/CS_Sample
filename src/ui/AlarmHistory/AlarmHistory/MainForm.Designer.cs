@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.XtraEditors.RangeControlRange rangeControlRange1 = new DevExpress.XtraEditors.RangeControlRange();
             DevExpress.XtraCharts.Legend legend1 = new DevExpress.XtraCharts.Legend();
             DevExpress.XtraCharts.PieSeriesLabel pieSeriesLabel1 = new DevExpress.XtraCharts.PieSeriesLabel();
             DevExpress.XtraCharts.PieSeriesView pieSeriesView1 = new DevExpress.XtraCharts.PieSeriesView();
-            DevExpress.XtraCharts.SeriesTitle seriesTitle1 = new DevExpress.XtraCharts.SeriesTitle();
+            this.ranAlarmHistoryGrid = new DevExpress.XtraEditors.RangeControl();
             this.alarmHistoryTableBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ctcAlarmHistory = new DevExpress.XtraCharts.ChartControl();
             this.de_Start = new DevExpress.XtraEditors.DateEdit();
             this.te_End = new DevExpress.XtraEditors.TimeEdit();
             this.de_End = new DevExpress.XtraEditors.DateEdit();
@@ -45,7 +47,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.ctcAlarmHistory = new DevExpress.XtraCharts.ChartControl();
             this.grdAlarmHistory = new DevExpress.XtraGrid.GridControl();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colUnit = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -58,8 +59,11 @@
             this.colCount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tablePanel2 = new DevExpress.Utils.Layout.TablePanel();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
-            this.ranAlarmHistoryGrid = new DevExpress.XtraEditors.RangeControl();
+            ((System.ComponentModel.ISupportInitialize)(this.ranAlarmHistoryGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmHistoryTableBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctcAlarmHistory)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.de_Start.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.de_Start.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_End.Properties)).BeginInit();
@@ -70,21 +74,69 @@
             this.tp_Header.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeFilter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eqpFilter.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctcAlarmHistory)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAlarmHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel2)).BeginInit();
             this.tablePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
             this.tablePanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ranAlarmHistoryGrid)).BeginInit();
             this.SuspendLayout();
+            // 
+            // ranAlarmHistoryGrid
+            // 
+            this.tablePanel1.SetColumn(this.ranAlarmHistoryGrid, 0);
+            this.ranAlarmHistoryGrid.Location = new System.Drawing.Point(3, 602);
+            this.ranAlarmHistoryGrid.Name = "ranAlarmHistoryGrid";
+            this.tablePanel1.SetRow(this.ranAlarmHistoryGrid, 1);
+            rangeControlRange1.Maximum = new System.DateTime(((long)(0)));
+            rangeControlRange1.Minimum = new System.DateTime(((long)(0)));
+            rangeControlRange1.Owner = this.ranAlarmHistoryGrid;
+            this.ranAlarmHistoryGrid.SelectedRange = rangeControlRange1;
+            this.ranAlarmHistoryGrid.Size = new System.Drawing.Size(617, 86);
+            this.ranAlarmHistoryGrid.TabIndex = 3;
+            this.ranAlarmHistoryGrid.Text = "rangeControl1";
             // 
             // alarmHistoryTableBindingSource
             // 
             this.alarmHistoryTableBindingSource.DataSource = typeof(AlarmHistory.AlarmHistoryTable);
+            // 
+            // ctcAlarmHistory
+            // 
+            this.tablePanel1.SetColumn(this.ctcAlarmHistory, 0);
+            this.ctcAlarmHistory.DataSource = this.alarmHistoryTableBindingSource;
+            this.ctcAlarmHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctcAlarmHistory.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside;
+            this.ctcAlarmHistory.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
+            this.ctcAlarmHistory.Legend.EnableAntialiasing = DevExpress.Utils.DefaultBoolean.True;
+            this.ctcAlarmHistory.Legend.Name = "Default Legend";
+            this.ctcAlarmHistory.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
+            legend1.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
+            legend1.Name = "Legend1";
+            legend1.Tag = "";
+            legend1.Title.Text = "Alarm History";
+            legend1.Title.Visible = true;
+            this.ctcAlarmHistory.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
+            legend1});
+            this.ctcAlarmHistory.Location = new System.Drawing.Point(3, 3);
+            this.ctcAlarmHistory.Name = "ctcAlarmHistory";
+            this.tablePanel1.SetRow(this.ctcAlarmHistory, 0);
+            this.ctcAlarmHistory.SeriesDataMember = "Unit";
+            this.ctcAlarmHistory.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
+            this.ctcAlarmHistory.SeriesTemplate.ArgumentDataMember = "AlarmHexCode";
+            pieSeriesLabel1.TextPattern = "{A}:{V}({VP:0%})";
+            this.ctcAlarmHistory.SeriesTemplate.Label = pieSeriesLabel1;
+            this.ctcAlarmHistory.SeriesTemplate.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            this.ctcAlarmHistory.SeriesTemplate.LegendName = "Default Legend";
+            this.ctcAlarmHistory.SeriesTemplate.SeriesColorizer = null;
+            this.ctcAlarmHistory.SeriesTemplate.SeriesDataMember = "Unit";
+            this.ctcAlarmHistory.SeriesTemplate.ToolTipEnabled = DevExpress.Utils.DefaultBoolean.True;
+            this.ctcAlarmHistory.SeriesTemplate.ToolTipHintDataMember = "AlarmTextKorean";
+            this.ctcAlarmHistory.SeriesTemplate.ToolTipPointPattern = "{A} : {V}";
+            this.ctcAlarmHistory.SeriesTemplate.ValueDataMembersSerializable = "Count";
+            this.ctcAlarmHistory.SeriesTemplate.View = pieSeriesView1;
+            this.ctcAlarmHistory.Size = new System.Drawing.Size(617, 593);
+            this.ctcAlarmHistory.TabIndex = 1;
+            this.ctcAlarmHistory.ToolTipEnabled = DevExpress.Utils.DefaultBoolean.True;
             // 
             // de_Start
             // 
@@ -243,45 +295,6 @@
             this.label1.Text = "~";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ctcAlarmHistory
-            // 
-            this.tablePanel1.SetColumn(this.ctcAlarmHistory, 0);
-            this.ctcAlarmHistory.DataSource = this.alarmHistoryTableBindingSource;
-            this.ctcAlarmHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctcAlarmHistory.Legend.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.LeftOutside;
-            this.ctcAlarmHistory.Legend.AlignmentVertical = DevExpress.XtraCharts.LegendAlignmentVertical.Center;
-            this.ctcAlarmHistory.Legend.EnableAntialiasing = DevExpress.Utils.DefaultBoolean.True;
-            this.ctcAlarmHistory.Legend.Name = "Default Legend";
-            this.ctcAlarmHistory.Legend.Visibility = DevExpress.Utils.DefaultBoolean.False;
-            legend1.AlignmentHorizontal = DevExpress.XtraCharts.LegendAlignmentHorizontal.Center;
-            legend1.Name = "Legend1";
-            legend1.Tag = "";
-            legend1.Title.Text = "Alarm History";
-            legend1.Title.Visible = true;
-            this.ctcAlarmHistory.Legends.AddRange(new DevExpress.XtraCharts.Legend[] {
-            legend1});
-            this.ctcAlarmHistory.Location = new System.Drawing.Point(3, 3);
-            this.ctcAlarmHistory.Name = "ctcAlarmHistory";
-            this.tablePanel1.SetRow(this.ctcAlarmHistory, 0);
-            this.ctcAlarmHistory.SeriesDataMember = "Unit";
-            this.ctcAlarmHistory.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.ctcAlarmHistory.SeriesTemplate.ArgumentDataMember = "AlarmHexCode";
-            pieSeriesLabel1.LineVisibility = DevExpress.Utils.DefaultBoolean.True;
-            pieSeriesLabel1.TextAlignment = System.Drawing.StringAlignment.Near;
-            pieSeriesLabel1.TextPattern = "{A}:{V}";
-            this.ctcAlarmHistory.SeriesTemplate.Label = pieSeriesLabel1;
-            this.ctcAlarmHistory.SeriesTemplate.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            this.ctcAlarmHistory.SeriesTemplate.LegendName = "Default Legend";
-            this.ctcAlarmHistory.SeriesTemplate.SeriesColorizer = null;
-            this.ctcAlarmHistory.SeriesTemplate.SeriesDataMember = "Unit";
-            this.ctcAlarmHistory.SeriesTemplate.ValueDataMembersSerializable = "Count";
-            pieSeriesView1.Titles.AddRange(new DevExpress.XtraCharts.SeriesTitle[] {
-            seriesTitle1});
-            pieSeriesView1.TotalLabel.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.ctcAlarmHistory.SeriesTemplate.View = pieSeriesView1;
-            this.ctcAlarmHistory.Size = new System.Drawing.Size(617, 593);
-            this.ctcAlarmHistory.TabIndex = 1;
-            // 
             // grdAlarmHistory
             // 
             this.tablePanel2.SetColumn(this.grdAlarmHistory, 0);
@@ -402,17 +415,6 @@
             this.tablePanel1.Size = new System.Drawing.Size(623, 691);
             this.tablePanel1.TabIndex = 4;
             // 
-            // ranAlarmHistoryGrid
-            // 
-            this.ranAlarmHistoryGrid.Client = this.ctcAlarmHistory;
-            this.tablePanel1.SetColumn(this.ranAlarmHistoryGrid, 0);
-            this.ranAlarmHistoryGrid.Location = new System.Drawing.Point(3, 602);
-            this.ranAlarmHistoryGrid.Name = "ranAlarmHistoryGrid";
-            this.tablePanel1.SetRow(this.ranAlarmHistoryGrid, 1);
-            this.ranAlarmHistoryGrid.Size = new System.Drawing.Size(617, 86);
-            this.ranAlarmHistoryGrid.TabIndex = 3;
-            this.ranAlarmHistoryGrid.Text = "rangeControl1";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
@@ -424,7 +426,11 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.ranAlarmHistoryGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmHistoryTableBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ctcAlarmHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.de_Start.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.de_Start.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.te_End.Properties)).EndInit();
@@ -436,16 +442,12 @@
             this.tp_Header.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeFilter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.eqpFilter.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesLabel1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ctcAlarmHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grdAlarmHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel2)).EndInit();
             this.tablePanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
             this.tablePanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ranAlarmHistoryGrid)).EndInit();
             this.ResumeLayout(false);
 
         }

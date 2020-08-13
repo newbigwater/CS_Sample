@@ -63,7 +63,7 @@ where cast(dbo.AlarmTable.ReceivedTime AS DATE) = '2020-08-11' and dbo.AlarmTabl
 group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese
 order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode;
              */
-            string query = "select dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120) as ReceivedTime, dbo.AlarmTable.AlarmCode, dbo.AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese, COUNT(dbo.AlarmTable.AlarmHexCode) as Count " +
+            string query = "select dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120) as ReceivedTime, dbo.AlarmTable.AlarmCode, dbo.AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese, COUNT(dbo.AlarmTable.AlarmHexCode) as Count " +
                            "from dbo.AlarmTable " +
                            $"where convert(varchar, dbo.AlarmTable.ReceivedTime, 120) between '{startDateTime.ToString("yyyy-MM-dd HH:mm:ss")}' and '{endDateTime.ToString("yyyy-MM-dd HH:mm:ss")}' " +
                            "and dbo.AlarmTable.AlarmHappen = 1 ";
@@ -80,8 +80,8 @@ order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.Alar
             }
             
             query +=
-                $"group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese " +
-                $"order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode";
+                $"group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese " +
+                $"order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode";
 
             var tagetDataList = ntsDataCtx.ExecuteQuery<AlarmHistoryTable>(query);
             alarmHistoryTableBindingSource.DataSource = tagetDataList;
