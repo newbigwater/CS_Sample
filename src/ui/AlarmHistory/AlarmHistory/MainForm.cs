@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Text;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AlarmHistory.Annotations;
+using DevExpress.XtraCharts;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Filtering.Templates;
 using DateTime = System.DateTime;
@@ -30,7 +32,7 @@ namespace AlarmHistory
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            var unitList = ntsDataCtx.ExecuteQuery<AlarmHistoryTable>(
+            var unitList = ntsDataCtx.ExecuteQuery<AlarmHistorySchema>(
                 "select dbo.AlarmTable.Unit " +
                 "from dbo.AlarmTable " +
                 "group by dbo.AlarmTable.Unit " +
@@ -57,11 +59,12 @@ namespace AlarmHistory
             //                                 select tuple;
 
             /*
-select dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120) as ReceivedTime, dbo.AlarmTable.AlarmCode, dbo.AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese, COUNT(dbo.AlarmTable.AlarmHexCode) as Count
+select dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120) as ReceivedTime, dbo.AlarmTable.AlarmCode, dbo.AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese, COUNT(dbo.AlarmTable.AlarmHexCode) as Count
 from dbo.AlarmTable
-where cast(dbo.AlarmTable.ReceivedTime AS DATE) = '2020-08-11' and dbo.AlarmTable.AlarmHappen = 1
-group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese
-order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode;
+where cast(dbo.AlarmTable.ReceivedTime AS datetime) between '2020-08-11 13:20:00' and '2020-08-11 13:21:00'
+	and dbo.AlarmTable.AlarmHappen = 1
+group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese
+order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode;
              */
             string query = "select dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120) as ReceivedTime, dbo.AlarmTable.AlarmCode, dbo.AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese, COUNT(dbo.AlarmTable.AlarmHexCode) as Count " +
                            "from dbo.AlarmTable " +
@@ -83,8 +86,119 @@ order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(varchar, dbo.Alar
                 $"group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese " +
                 $"order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode";
 
-            var tagetDataList = ntsDataCtx.ExecuteQuery<AlarmHistoryTable>(query);
+            var tagetDataList = ntsDataCtx.ExecuteQuery<TableColumnSchema>(query);
             alarmHistoryTableBindingSource.DataSource = tagetDataList;
+        }
+
+        private void grdAlarmHistory_MouseClick(object sender, MouseEventArgs e)
+        {
+            if(e.Button == MouseButtons.Right)
+                pum_AlarmHistoryGrid.ShowPopup(Control.MousePosition);
+        }
+        
+
+        private void ctcAlarmHistory_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+                pum_AlarmHistoryChart.ShowPopup(Control.MousePosition);
+        }
+
+        private void barMgrAlarmHistoryGrid_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string fileName = GetFilePath(e.Item.Caption, GetFilter(e.Item.Caption));
+            if ("" == fileName)
+                return;
+
+            switch (e.Item.Caption)
+            {
+                case "Export to Excel":
+                    {
+                        grdAlarmHistory.ExportToXlsx(fileName);
+                    }
+                    break;
+                case "Export to CSV":
+                    {
+                        grdAlarmHistory.ExportToCsv(fileName);
+                    }
+                    break;
+                case "Export to DOCX":
+                    {
+                        grdAlarmHistory.ExportToDocx(fileName);
+                    }
+                    break;
+                case "Export to HTML":
+                    {
+                        grdAlarmHistory.ExportToHtml(fileName);
+                    }
+                    break;
+                case "Export to PDF":
+                    {
+                        grdAlarmHistory.ExportToPdf(fileName);
+                    }
+                    break;
+            }
+        }
+
+        private void barMgrAlarmHistoryChart_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            string fileName = GetFilePath(e.Item.Caption, GetFilter(e.Item.Caption));
+            if ("" == fileName)
+                return;
+
+            switch (e.Item.Caption)
+            {
+                case "Export to Excel":
+                    {
+                        ctcAlarmHistory.ExportToXlsx(fileName);
+                    }
+                    break;
+
+                case "Export to IMG":
+                    {   
+                        ChartControl chart = (ChartControl)ctcAlarmHistory.Clone();
+                        chart.Size = new Size(1200, 1200);
+                        chart.ExportToImage(fileName, ImageFormat.Jpeg);
+                        chart.Dispose();
+                    }
+                    break;
+
+                case "Export to PDF":
+                    {
+                        ctcAlarmHistory.ExportToXlsx(fileName);
+                    }
+                    break;
+            }
+        }
+        
+        private string GetFilter(string type)
+        {
+            string filter = "";
+
+            switch (type)
+            {
+                case "Export to Excel": filter = "XLSX |*.xlsx"; break;
+                case "Export to CSV"  : filter = "CSV |*.csv"  ; break;
+                case "Export to DOCX" : filter = "DOCX |*.docx"; break;
+                case "Export to HTML" : filter = "HTML |*.html"; break;
+                case "Export to PDF"  : filter = "PDF |*.pdf"  ; break;
+                case "Export to IMG"  : filter = "JPG |*.jpg"  ; break;
+            }
+
+            return filter;
+        }
+
+        private string GetFilePath(string title, string filter)
+        {
+            SaveFileDialog saveFileDlg = new SaveFileDialog()
+            {
+                Title = title,
+                Filter = filter
+            };
+
+            if (saveFileDlg.ShowDialog() != DialogResult.OK)
+                return "";
+            else
+                return saveFileDlg.FileName;
         }
     }
 }

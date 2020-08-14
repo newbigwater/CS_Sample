@@ -56,6 +56,27 @@
             this.colCount = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tablePanel2 = new DevExpress.Utils.Layout.TablePanel();
             this.tablePanel1 = new DevExpress.Utils.Layout.TablePanel();
+            this.pum_AlarmHistoryGrid = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barBtn_Excel = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_CSV = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_DOCX = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_HTML = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_PDF = new DevExpress.XtraBars.BarButtonItem();
+            this.barMgrAlarmHistoryGrid = new DevExpress.XtraBars.BarManager(this.components);
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.pum_AlarmHistoryChart = new DevExpress.XtraBars.PopupMenu(this.components);
+            this.barBtn__Excel = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn_IMG = new DevExpress.XtraBars.BarButtonItem();
+            this.barBtn__PDF = new DevExpress.XtraBars.BarButtonItem();
+            this.barMgrAlarmHistoryChart = new DevExpress.XtraBars.BarManager(this.components);
+            this.bar3 = new DevExpress.XtraBars.Bar();
+            this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             ((System.ComponentModel.ISupportInitialize)(this.ctcAlarmHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(pieSeriesView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.alarmHistoryTableBindingSource)).BeginInit();
@@ -75,6 +96,10 @@
             this.tablePanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).BeginInit();
             this.tablePanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pum_AlarmHistoryGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barMgrAlarmHistoryGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pum_AlarmHistoryChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barMgrAlarmHistoryChart)).BeginInit();
             this.SuspendLayout();
             // 
             // ctcAlarmHistory
@@ -109,13 +134,14 @@
             this.ctcAlarmHistory.SeriesTemplate.ToolTipPointPattern = "{A} : {V}";
             this.ctcAlarmHistory.SeriesTemplate.ValueDataMembersSerializable = "Count";
             this.ctcAlarmHistory.SeriesTemplate.View = pieSeriesView1;
-            this.ctcAlarmHistory.Size = new System.Drawing.Size(617, 685);
+            this.ctcAlarmHistory.Size = new System.Drawing.Size(617, 662);
             this.ctcAlarmHistory.TabIndex = 1;
             this.ctcAlarmHistory.ToolTipEnabled = DevExpress.Utils.DefaultBoolean.True;
+            this.ctcAlarmHistory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.ctcAlarmHistory_MouseClick);
             // 
             // alarmHistoryTableBindingSource
             // 
-            this.alarmHistoryTableBindingSource.DataSource = typeof(AlarmHistory.AlarmHistoryTable);
+            this.alarmHistoryTableBindingSource.DataSource = typeof(AlarmHistory.AlarmHistorySchema);
             // 
             // de_Start
             // 
@@ -283,10 +309,11 @@
             this.grdAlarmHistory.MainView = this.gridView1;
             this.grdAlarmHistory.Name = "grdAlarmHistory";
             this.tablePanel2.SetRow(this.grdAlarmHistory, 0);
-            this.grdAlarmHistory.Size = new System.Drawing.Size(718, 685);
+            this.grdAlarmHistory.Size = new System.Drawing.Size(718, 662);
             this.grdAlarmHistory.TabIndex = 2;
             this.grdAlarmHistory.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
+            this.grdAlarmHistory.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdAlarmHistory_MouseClick);
             // 
             // gridView1
             // 
@@ -376,7 +403,7 @@
             this.tablePanel2.Name = "tablePanel2";
             this.tablePanel2.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 599F)});
-            this.tablePanel2.Size = new System.Drawing.Size(724, 691);
+            this.tablePanel2.Size = new System.Drawing.Size(724, 668);
             this.tablePanel2.TabIndex = 3;
             // 
             // tablePanel1
@@ -389,8 +416,185 @@
             this.tablePanel1.Name = "tablePanel1";
             this.tablePanel1.Rows.AddRange(new DevExpress.Utils.Layout.TablePanelRow[] {
             new DevExpress.Utils.Layout.TablePanelRow(DevExpress.Utils.Layout.TablePanelEntityStyle.Absolute, 599F)});
-            this.tablePanel1.Size = new System.Drawing.Size(623, 691);
+            this.tablePanel1.Size = new System.Drawing.Size(623, 668);
             this.tablePanel1.TabIndex = 4;
+            // 
+            // pum_AlarmHistoryGrid
+            // 
+            this.pum_AlarmHistoryGrid.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn_Excel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn_CSV),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn_DOCX),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn_HTML),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn_PDF)});
+            this.pum_AlarmHistoryGrid.Manager = this.barMgrAlarmHistoryGrid;
+            this.pum_AlarmHistoryGrid.Name = "pum_AlarmHistoryGrid";
+            // 
+            // barBtn_Excel
+            // 
+            this.barBtn_Excel.Caption = "Export to Excel";
+            this.barBtn_Excel.Id = 0;
+            this.barBtn_Excel.Name = "barBtn_Excel";
+            // 
+            // barBtn_CSV
+            // 
+            this.barBtn_CSV.Caption = "Export to CSV";
+            this.barBtn_CSV.Id = 1;
+            this.barBtn_CSV.Name = "barBtn_CSV";
+            // 
+            // barBtn_DOCX
+            // 
+            this.barBtn_DOCX.Caption = "Export to DOCX";
+            this.barBtn_DOCX.Id = 2;
+            this.barBtn_DOCX.Name = "barBtn_DOCX";
+            // 
+            // barBtn_HTML
+            // 
+            this.barBtn_HTML.Caption = "Export to HTML";
+            this.barBtn_HTML.Id = 3;
+            this.barBtn_HTML.Name = "barBtn_HTML";
+            // 
+            // barBtn_PDF
+            // 
+            this.barBtn_PDF.Caption = "Export to PDF";
+            this.barBtn_PDF.Id = 4;
+            this.barBtn_PDF.Name = "barBtn_PDF";
+            // 
+            // barMgrAlarmHistoryGrid
+            // 
+            this.barMgrAlarmHistoryGrid.DockControls.Add(this.barDockControlTop);
+            this.barMgrAlarmHistoryGrid.DockControls.Add(this.barDockControlBottom);
+            this.barMgrAlarmHistoryGrid.DockControls.Add(this.barDockControlLeft);
+            this.barMgrAlarmHistoryGrid.DockControls.Add(this.barDockControlRight);
+            this.barMgrAlarmHistoryGrid.Form = this;
+            this.barMgrAlarmHistoryGrid.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barBtn_Excel,
+            this.barBtn_CSV,
+            this.barBtn_DOCX,
+            this.barBtn_HTML,
+            this.barBtn_PDF});
+            this.barMgrAlarmHistoryGrid.MaxItemId = 5;
+            this.barMgrAlarmHistoryGrid.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barMgrAlarmHistoryGrid_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barMgrAlarmHistoryGrid;
+            this.barDockControlTop.Size = new System.Drawing.Size(1350, 0);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 695);
+            this.barDockControlBottom.Manager = this.barMgrAlarmHistoryGrid;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1350, 0);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlLeft.Manager = this.barMgrAlarmHistoryGrid;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 695);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1350, 0);
+            this.barDockControlRight.Manager = this.barMgrAlarmHistoryGrid;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 695);
+            // 
+            // pum_AlarmHistoryChart
+            // 
+            this.pum_AlarmHistoryChart.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn__Excel),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn_IMG),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barBtn__PDF)});
+            this.pum_AlarmHistoryChart.Manager = this.barMgrAlarmHistoryChart;
+            this.pum_AlarmHistoryChart.Name = "pum_AlarmHistoryChart";
+            // 
+            // barBtn__Excel
+            // 
+            this.barBtn__Excel.Caption = "Export to Excel";
+            this.barBtn__Excel.Id = 0;
+            this.barBtn__Excel.Name = "barBtn__Excel";
+            // 
+            // barBtn_IMG
+            // 
+            this.barBtn_IMG.Caption = "Export to IMG";
+            this.barBtn_IMG.Id = 1;
+            this.barBtn_IMG.Name = "barBtn_IMG";
+            // 
+            // barBtn__PDF
+            // 
+            this.barBtn__PDF.Caption = "Export to PDF";
+            this.barBtn__PDF.Id = 2;
+            this.barBtn__PDF.Name = "barBtn__PDF";
+            // 
+            // barMgrAlarmHistoryChart
+            // 
+            this.barMgrAlarmHistoryChart.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
+            this.bar3});
+            this.barMgrAlarmHistoryChart.DockControls.Add(this.barDockControl1);
+            this.barMgrAlarmHistoryChart.DockControls.Add(this.barDockControl2);
+            this.barMgrAlarmHistoryChart.DockControls.Add(this.barDockControl3);
+            this.barMgrAlarmHistoryChart.DockControls.Add(this.barDockControl4);
+            this.barMgrAlarmHistoryChart.Form = this;
+            this.barMgrAlarmHistoryChart.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.barBtn__Excel,
+            this.barBtn_IMG,
+            this.barBtn__PDF});
+            this.barMgrAlarmHistoryChart.MaxItemId = 3;
+            this.barMgrAlarmHistoryChart.StatusBar = this.bar3;
+            this.barMgrAlarmHistoryChart.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barMgrAlarmHistoryChart_ItemClick);
+            // 
+            // bar3
+            // 
+            this.bar3.BarName = "Status bar";
+            this.bar3.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.bar3.DockCol = 0;
+            this.bar3.DockRow = 0;
+            this.bar3.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.bar3.OptionsBar.AllowQuickCustomization = false;
+            this.bar3.OptionsBar.DrawDragBorder = false;
+            this.bar3.OptionsBar.UseWholeRow = true;
+            this.bar3.Text = "Status bar";
+            // 
+            // barDockControl1
+            // 
+            this.barDockControl1.CausesValidation = false;
+            this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControl1.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl1.Manager = this.barMgrAlarmHistoryChart;
+            this.barDockControl1.Size = new System.Drawing.Size(1350, 0);
+            // 
+            // barDockControl2
+            // 
+            this.barDockControl2.CausesValidation = false;
+            this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControl2.Location = new System.Drawing.Point(0, 695);
+            this.barDockControl2.Manager = this.barMgrAlarmHistoryChart;
+            this.barDockControl2.Size = new System.Drawing.Size(1350, 23);
+            // 
+            // barDockControl3
+            // 
+            this.barDockControl3.CausesValidation = false;
+            this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl3.Manager = this.barMgrAlarmHistoryChart;
+            this.barDockControl3.Size = new System.Drawing.Size(0, 695);
+            // 
+            // barDockControl4
+            // 
+            this.barDockControl4.CausesValidation = false;
+            this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControl4.Location = new System.Drawing.Point(1350, 0);
+            this.barDockControl4.Manager = this.barMgrAlarmHistoryChart;
+            this.barDockControl4.Size = new System.Drawing.Size(0, 695);
             // 
             // MainForm
             // 
@@ -400,6 +604,14 @@
             this.Controls.Add(this.tablePanel1);
             this.Controls.Add(this.tablePanel2);
             this.Controls.Add(this.tp_Header);
+            this.Controls.Add(this.barDockControlLeft);
+            this.Controls.Add(this.barDockControlRight);
+            this.Controls.Add(this.barDockControlBottom);
+            this.Controls.Add(this.barDockControlTop);
+            this.Controls.Add(this.barDockControl3);
+            this.Controls.Add(this.barDockControl4);
+            this.Controls.Add(this.barDockControl2);
+            this.Controls.Add(this.barDockControl1);
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainForm_Load);
@@ -423,7 +635,12 @@
             this.tablePanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tablePanel1)).EndInit();
             this.tablePanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pum_AlarmHistoryGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barMgrAlarmHistoryGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pum_AlarmHistoryChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.barMgrAlarmHistoryChart)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -453,5 +670,26 @@
         private DevExpress.XtraGrid.Columns.GridColumn colAlarmTextChinese;
         private DevExpress.XtraGrid.Columns.GridColumn colCount;
         private DevExpress.Utils.Layout.TablePanel tablePanel1;
+        private DevExpress.XtraBars.PopupMenu pum_AlarmHistoryGrid;
+        private DevExpress.XtraBars.BarButtonItem barBtn_Excel;
+        private DevExpress.XtraBars.BarButtonItem barBtn_CSV;
+        private DevExpress.XtraBars.BarButtonItem barBtn_DOCX;
+        private DevExpress.XtraBars.BarButtonItem barBtn_HTML;
+        private DevExpress.XtraBars.BarButtonItem barBtn_PDF;
+        private DevExpress.XtraBars.BarManager barMgrAlarmHistoryGrid;
+        private DevExpress.XtraBars.BarDockControl barDockControlTop;
+        private DevExpress.XtraBars.BarDockControl barDockControlBottom;
+        private DevExpress.XtraBars.BarDockControl barDockControlLeft;
+        private DevExpress.XtraBars.BarDockControl barDockControlRight;
+        private DevExpress.XtraBars.BarDockControl barDockControl3;
+        private DevExpress.XtraBars.BarManager barMgrAlarmHistoryChart;
+        private DevExpress.XtraBars.Bar bar3;
+        private DevExpress.XtraBars.BarDockControl barDockControl1;
+        private DevExpress.XtraBars.BarDockControl barDockControl2;
+        private DevExpress.XtraBars.BarDockControl barDockControl4;
+        private DevExpress.XtraBars.BarButtonItem barBtn__Excel;
+        private DevExpress.XtraBars.BarButtonItem barBtn_IMG;
+        private DevExpress.XtraBars.BarButtonItem barBtn__PDF;
+        private DevExpress.XtraBars.PopupMenu pum_AlarmHistoryChart;
     }
 }

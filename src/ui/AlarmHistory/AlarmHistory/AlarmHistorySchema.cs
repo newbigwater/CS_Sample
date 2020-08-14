@@ -9,7 +9,7 @@ using AlarmHistory.Annotations;
 
 namespace AlarmHistory
 {
-    public class AlarmHistoryTable : INotifyPropertyChanged
+    public class AlarmHistorySchema : INotifyPropertyChanged
     {
         private int? _Unit;
         private string _Category;
@@ -145,6 +145,35 @@ namespace AlarmHistory
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+    }
+
+    public class TableColumnSchema : INotifyPropertyChanged
+    {
+        private string _name;
+
+        public string Name
+        {
+            get
+            {
+                return this._name;
+            }
+            set
+            {
+                if ((this._name != value))
+                {
+                    this._name = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

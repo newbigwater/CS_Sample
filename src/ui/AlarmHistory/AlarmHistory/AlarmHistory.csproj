@@ -89,7 +89,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AlarmHistoryTable.cs" />
+    <Compile Include="AlarmHistorySchema.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
