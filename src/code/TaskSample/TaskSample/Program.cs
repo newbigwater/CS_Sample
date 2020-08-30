@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define _EX01
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -66,7 +68,8 @@ namespace TaskSample
             t1.Wait();
             t2.Wait();
             t3.Wait();
-#endif
+            Console.ReadLine();
+#elif _EX02
             long from = 1; //Convert.ToInt64(args[0]);
             long to = 100; //Convert.ToInt64(args[1]);
             int taskCount = 3; //Convert.ToInt32(args[2]);
@@ -125,6 +128,7 @@ namespace TaskSample
 
             Console.WriteLine($"Prime number count between {from} and {to} : {total.Count}");
             Console.WriteLine($"Ellapsed time : {ellapsed}");
+#endif
         }
     }
 }
