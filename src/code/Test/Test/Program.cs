@@ -10,11 +10,32 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            var test = new object();
-            test = Convert.ToInt32("123");
+            string[] sentences =
+            {
+                "EQP1 TABDFSDFG",
+                " SDfasdf as34we EQP2",
+                "sdfsadfeEQPEQP3dfsd23 sd"
+            };
 
-            Console.WriteLine($"{test}");
-            Console.ReadLine();
+            for (int i = 0; i <= 3; ++i)
+            {
+                string pattern = $"EQP{i}";
+
+                Console.WriteLine($"Pattern : {pattern} ------------------------------------------");
+                foreach (var sentence in sentences)
+                {
+                    Console.WriteLine($"Target : {sentence}");
+                    if (System.Text.RegularExpressions.Regex.IsMatch(sentence, pattern, System.Text.RegularExpressions.RegexOptions.IgnoreCase))
+                    {
+                        Console.WriteLine($"  (match for '{pattern}' found)");
+                    }
+                    else
+                    {
+                        Console.WriteLine();
+                    }
+                    Console.WriteLine();
+                }
+            }
         }
     }
 }
