@@ -23,7 +23,7 @@ int ClassLib::WrapStaticLib::Add(int a, int b)
 	return m_pStaticLib->Add(a, b);
 }
 
-int AddTest1(int a, int b)
+int AddTest1(SHORT a, int b)
 {
-	return a + b;
+	return a + b + 1;
 }

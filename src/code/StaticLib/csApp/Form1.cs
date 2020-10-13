@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ClassLib;
+//using ClassLib;
 
 namespace csApp
 {
@@ -24,8 +24,8 @@ namespace csApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ClassLib.WrapStaticLib test = new WrapStaticLib();
-            edtResult.Text = test.Add(int.Parse(edtFir.Text), int.Parse(edtSec.Text)).ToString();
+            //ClassLib.WrapStaticLib test = new WrapStaticLib();
+            //edtResult.Text = test.Add(int.Parse(edtFir.Text), int.Parse(edtSec.Text)).ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
