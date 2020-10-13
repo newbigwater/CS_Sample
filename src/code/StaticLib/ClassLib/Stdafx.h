@@ -3,5 +3,5 @@
 // 들어 있는 포함 파일입니다.
 
 #pragma once
-
+#include <windows.h>
 

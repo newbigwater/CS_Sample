@@ -32,6 +32,7 @@
             this.edtFir = new DevExpress.XtraEditors.TextEdit();
             this.edtSec = new DevExpress.XtraEditors.TextEdit();
             this.edtResult = new DevExpress.XtraEditors.TextEdit();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.edtFir.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtSec.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.edtResult.Properties)).BeginInit();
@@ -68,11 +69,22 @@
             this.edtResult.Size = new System.Drawing.Size(100, 20);
             this.edtResult.TabIndex = 3;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(224, 41);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(603, 261);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.edtResult);
             this.Controls.Add(this.edtSec);
             this.Controls.Add(this.edtFir);
@@ -92,6 +104,7 @@
         private DevExpress.XtraEditors.TextEdit edtFir;
         private DevExpress.XtraEditors.TextEdit edtSec;
         private DevExpress.XtraEditors.TextEdit edtResult;
+        private System.Windows.Forms.Button button2;
     }
 }
 

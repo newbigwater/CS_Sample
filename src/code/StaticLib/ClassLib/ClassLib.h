@@ -19,3 +19,12 @@ namespace ClassLib {
 		int Add(int a, int b);
 	};
 }
+
+extern "C" {
+	__declspec(dllexport) int AddTest1(int a, int b);
+}
+
+extern "C" __declspec(dllexport) int AddTest2(int a, int b, int c)
+{
+	return a + b + c;
+}
