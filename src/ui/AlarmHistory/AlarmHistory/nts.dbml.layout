@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="nts">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 8.5" name="nts">
   <DataContextMoniker Name="/ntsDataContext" />
   <nestedChildShapes>
-    <classShape Id="c7db4729-7fd8-44b6-9465-10118ad25771" absoluteBounds="6.5, 2.5, 2, 2.3478011067708335">
+    <classShape Id="4dc31682-9f54-4d79-961e-a39f0f1cfb36" absoluteBounds="9.75, 2.75, 2, 2.3478011067708335">
       <DataClassMoniker Name="/ntsDataContext/AlarmTable" />
       <nestedChildShapes>
-        <elementListCompartment Id="d54d9cbd-d0a4-4761-b053-45177d3df3fe" absoluteBounds="6.515, 2.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="006c584d-52df-4162-ad96-d849f5cbeed0" absoluteBounds="9.765, 3.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="3f777b59-d9d6-4eec-ba25-6cd82709f182" absoluteBounds="2.5, 3.5, 2, 1.7708968098958331">
+    <classShape Id="9037011c-6b2f-4871-aa9a-ad7e96d8cf25" absoluteBounds="4.25, 3.375, 2, 1.7708968098958331">
       <DataClassMoniker Name="/ntsDataContext/TM1_SENSOR1" />
       <nestedChildShapes>
-        <elementListCompartment Id="cb1d7568-c30d-4786-b0e0-703b8b8260b4" absoluteBounds="2.515, 3.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="0f2ad3c4-07f6-4649-bb18-7806c8a6eb34" absoluteBounds="4.265, 3.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

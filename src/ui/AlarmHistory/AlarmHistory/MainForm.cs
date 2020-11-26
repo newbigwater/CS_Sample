@@ -86,7 +86,7 @@ order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, db
                 $"group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese " +
                 $"order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode";
 
-            var tagetDataList = ntsDataCtx.ExecuteQuery<TableColumnSchema>(query);
+            var tagetDataList = ntsDataCtx.ExecuteQuery<AlarmHistorySchema>(query);
             alarmHistoryTableBindingSource.DataSource = tagetDataList;
         }
 

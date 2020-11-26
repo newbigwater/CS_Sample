@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="NTS" Class="ntsDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-6PM4VR6\SQLEXPRESS;Initial Catalog=NTS;User ID=sa" SettingsObjectName="AlarmHistory.Properties.Settings" SettingsPropertyName="NTSConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=NEWBIGWATER\SQLEXPRESS;Initial Catalog=NTS;User ID=sa" SettingsObjectName="AlarmHistory.Properties.Settings" SettingsPropertyName="NTSConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AlarmTable" Member="AlarmTable">
     <Type Name="AlarmTable">
       <Column Name="ReceivedTime" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />

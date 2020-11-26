@@ -33,5 +33,15 @@ namespace AlarmHistory.Properties {
                 return ((string)(this["NTSConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=NEWBIGWATER\\SQLEXPRESS;Initial Catalog=NTS;User ID=sa;Password=1234")]
+        public string NTSConnectionString1 {
+            get {
+                return ((string)(this["NTSConnectionString1"]));
+            }
+        }
     }
 }
