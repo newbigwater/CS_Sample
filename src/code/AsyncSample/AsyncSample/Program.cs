@@ -13,12 +13,12 @@ namespace AsyncSample
             Console.WriteLine("C");
             Console.WriteLine("D");
 
-            await Task.Run(async () =>
+            await Task.Run(/*async*/ () =>
             {
                 for (int i = 1; i <= count; ++i)
                 {
                     Console.WriteLine($"{i}/{count}...");
-                    await Task.Delay(100);
+                    /*await*/ Task.Delay(3000);
                     //Task.Delay()는 Thread.Sleep()의 비동기 버전이라 할 수 있다.
                 }
             });
