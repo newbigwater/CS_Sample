@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -62,12 +63,60 @@ namespace Test
             testClass.num++;
         }
 
+        class Test
+        {
+            public int Data { get; set; }
+        }
+
+        enum E_TEST1
+        {
+            test1 = 0
+        }
+
+        enum E_TEST2
+        {
+            test2 = 1
+        }
+
+        class TestStruct
+        {
+            public void Print(E_TEST1 arg)
+            {
+                Console.WriteLine($"Output1 : {arg}");
+            }
+            public void Print(E_TEST2 arg)
+            {
+                Console.WriteLine($"Output2 : {arg}");
+            }
+        }
+
         static void Main(string[] args)
         {
-            Program test1 = new Program();
-            test1.TestFunction(test1.testClasfir);
-            test1.TestFunction(test1.testClasfir);
-            test1.TestFunction(test1.testClasfir);
+            TestStruct test = new TestStruct();
+
+            MethodInfo meInfo1 = test.GetType().
+                GetMethod("Print", 
+                    BindingFlags.Public | BindingFlags.Instance,
+                    null,
+                    new Type[] { typeof(E_TEST1) },
+                    null);
+            meInfo1.Invoke(test, new object[] {E_TEST1.test1});
+
+            MethodInfo meInfo2 = test.GetType().
+                GetMethod("Print",
+                    BindingFlags.Public | BindingFlags.Instance,
+                    null,
+                    new Type[] { typeof(E_TEST2) },
+                    null);
+            meInfo2.Invoke(test, new object[] { E_TEST2.test2 });
+
+            //test.GetType().GetMethod("Print").Invoke(test, new object[] { E_TEST1.test1 });
+            //test.GetType().GetMethod("Print").Invoke(test, new object[] { E_TEST2.test2 });
+
+            //             Program test1 = new Program();
+            //             test1.TestFunction(test1.testClasfir);
+            //             test1.TestFunction(test1.testClasfir);
+            //             test1.TestFunction(test1.testClasfir);
 
             //             DIRECTION_TYPE testEnum = DIRECTION_TYPE.Unknown;
             //             GetEnumerate<DIRECTION_TYPE>("Top, Left", out testEnum);

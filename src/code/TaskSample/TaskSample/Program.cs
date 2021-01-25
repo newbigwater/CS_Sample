@@ -28,8 +28,26 @@ namespace TaskSample
 
             return true;
         }
+
+        public static void TestFuncS()
+        {
+            Task t1 = Task.Run(() =>
+            {
+                for (int i = 0; i < 10; ++i)
+                {
+                    Console.WriteLine($"wait {i}");
+                    Thread.Sleep(1000);
+                }
+
+                Console.WriteLine("TEST1");
+            });
+
+            t1.Wait();
+        }
         static void Main(string[] args)
         {
+            TestFuncS();
+
 #if _EX01
             string srcFile = "d:\\a.txt";
             Console.WriteLine($"{srcFile}");

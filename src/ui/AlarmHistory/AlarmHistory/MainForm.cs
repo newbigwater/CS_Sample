@@ -86,8 +86,22 @@ order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, db
                 $"group by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode, .AlarmTable.AlarmHexCode, dbo.AlarmTable.AlarmTextKorean, dbo.AlarmTable.AlarmTextChinese " +
                 $"order by dbo.AlarmTable.Unit, dbo.AlarmTable.Category, convert(smalldatetime, dbo.AlarmTable.ReceivedTime, 120), dbo.AlarmTable.AlarmCode";
 
-            var tagetDataList = ntsDataCtx.ExecuteQuery<AlarmHistorySchema>(query);
-            alarmHistoryTableBindingSource.DataSource = tagetDataList;
+
+            alarmHistoryTableBindingSource.DataSource = ntsDataCtx.ExecuteQuery<AlarmHistorySchema>(query).ToList< AlarmHistorySchema>();
+            var list = alarmHistoryTableBindingSource.DataSource as IEnumerable<AlarmHistorySchema>;
+            var list2 = from alarm in list
+                        group alarm by alarm.AlarmCode
+                into grp
+                       select new {GroupKey = grp.Key, alarms = grp};
+
+            foreach (var arg in list2)
+            {
+                int i = 0;
+                foreach (var alarm in arg.alarms)
+                {
+                    i++;
+                }
+            }
         }
 
         private void grdAlarmHistory_MouseClick(object sender, MouseEventArgs e)
